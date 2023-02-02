@@ -1,0 +1,68 @@
+import "./App.css";
+import { firebaseConfig } from "./Firebase";
+import React, {useState} from "react";
+import { initializeApp, db } from "firebase/app";
+import { getFirestore, collection, doc, setDoc} from "firebase/firestore";
+
+
+export const Signup = () => {
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app); 
+
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [aboutMe, setaboutMe] = useState('')
+
+  const signup = async() => {
+
+    //const addUser = async (e) => {
+     // e.preventDefault();  
+     
+      try {
+          const docRef = await setDoc(doc(db, "users", email), 
+          {username : username, 
+            email : email,
+             password : password,
+            info: aboutMe})
+
+            alert(`Hello ${username}`)
+
+          //console.log(docRef.id)
+          console.log("hello this is a test")
+          
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+  //}
+    
+
+  }
+
+  const props1 = {
+    className:"center",
+    className:"input"
+  }
+
+  const props2 = {
+    className:"font",
+    className:"center"
+  }
+
+  return (
+  
+    <div className="main">
+      <div className="hero">
+      
+      <h1 {...props2}>Let's Get You Signed Up!</h1>
+      <input id="email" {...props1} type="email" placeholder="Email" value={email} onChange={(res) => setEmail(res.target.value)}></input>
+      <input id="password" {...props1} type="text" placeholder="Password" value={password} onChange={(res) => setPassword(res.target.value)}></input>
+      <input id="username"  {...props1} type="text" placeholder="Username" value={username} onChange={(res) => setUsername(res.target.value)}></input>
+      <textarea id="aboutMe" type="text" placeholder="About Yourself" value={aboutMe} onChange={(res) => setaboutMe(res.target.value)}></textarea>
+      <button className="signup" onClick={() => signup()}>Sign up</button>
+
+      </div>
+    </div>
+  );
+}
