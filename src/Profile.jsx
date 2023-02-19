@@ -5,26 +5,33 @@ import { firebaseConfig } from './Firebase'
 
 export const Profile = () => {
 
-    const add = async() => {
       const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app); 
-  
-      const querySnapshot = await getDocs(collection(db, "users"));
-      querySnapshot.forEach((doc) => {
-  
-          //console.log(doc.id);
-          //console.log(doc.data().email)
-          const emailList = doc.data().email
-          const usernameList = doc.data().username
-          console.log(usernameList)
-      
-      });
-    }
-    useEffect(() => {
-      add()
-    },[])
+      const db = getFirestore(app);
 
-  return (
-    <div></div>
+      useEffect(() => {
+        async function fetchData(){
+          const querySnapshot = await getDocs(collection(db, "users"));
+          querySnapshot.forEach((doc) => {
+    
+            //console.log(doc.id);
+            const infoList = doc.data().info
+            const usernameList = doc.data().username
+            //console.log(doc.data())
+            
+            querySnapshot.forEach(doc => { 
+              let userData = doc.data().info + doc.data().username + doc.data().email
+          })
+            
+        })}
+        fetchData()
+      },[])
+    
+
+
+    return (
+    //Insert HTML Here
+    <div id="root">
+      <div id="profile"></div>
+    </div>
   )
 }

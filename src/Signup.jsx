@@ -31,6 +31,8 @@ export const Signup = () => {
 
           //console.log(docRef.id)
           console.log("hello this is a test")
+
+
           
         } catch (e) {
           console.error("Error adding document: ", e);

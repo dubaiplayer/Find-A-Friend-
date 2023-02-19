@@ -1,13 +1,11 @@
-import { isUWP } from "@firebase/util";
-import "./Homepage.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import * as React from "react";
-import Logo from "./assets/websiteLogo.png";
 import { Signup } from "./Signup";
 import { Homepage } from "./Homepage";
 import { NoMatch } from "./NoMatch"
 import { Profile } from "./Profile"
 import { Signin }  from "./Signin"
+import { Dashboard } from "./Dashboard";
 
 export default function App() {
   const Routing = () => {
@@ -18,6 +16,7 @@ export default function App() {
         <Route path="*" index={true} element={<NoMatch />} />
         <Route path="/Profile" index={true} element={<Profile />} />
         <Route path="/Signin" index={true} element={<Signin />}/>
+        <Route path="/Dashboard" index={true} element={<Dashboard/>}/>
       </Routes>
     );
   };

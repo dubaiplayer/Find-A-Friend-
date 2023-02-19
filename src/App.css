@@ -9,7 +9,7 @@
 .hero{
   height: 750px;
   width: 550px;
-  background-color: white;
+  background-color: snow;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -46,4 +46,10 @@
   background: linear-gradient(90deg, rgba(253,126,29,1) 49%, rgba(252,105,50,1) 92%, rgba(180,60,58,1) 100%, rgba(252,176,69,1) 100%);
   color:white;
   font-family: 'Poppins';
+}
+
+.option{
+  height: 50px;
+  width:  125px;
+  background-color: white;
 }
