@@ -14,6 +14,9 @@ export const Signup = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [aboutMe, setaboutMe] = useState('')
+  const [age, setAge] = useState('')
+  const [gender, setGender] = useState('')
+  const [image, setImage] = useState('')
 
   const signup = async() => {
 
@@ -25,6 +28,9 @@ export const Signup = () => {
           {username : username, 
             email : email,
              password : password,
+             age: age,
+             gender: gender,
+             image: image,
             info: aboutMe})
 
             alert(`Hello ${username}`)
@@ -57,11 +63,14 @@ export const Signup = () => {
     <div className="main">
       <div className="hero">
       
-      <h1 {...props2}>Let's Get You Signed Up!</h1>
+      <h1 {...props2}>Sign Up!</h1>
       <input id="email" {...props1} type="email" placeholder="Email" value={email} onChange={(res) => setEmail(res.target.value)}></input>
       <input id="password" {...props1} type="text" placeholder="Password" value={password} onChange={(res) => setPassword(res.target.value)}></input>
       <input id="username"  {...props1} type="text" placeholder="Username" value={username} onChange={(res) => setUsername(res.target.value)}></input>
       <textarea id="aboutMe" type="text" placeholder="About Yourself" value={aboutMe} onChange={(res) => setaboutMe(res.target.value)}></textarea>
+      <input id="age" {...props1} type="number" placeholder="Age" value={age} onChange={(res) => setAge(res.target.value)}></input>
+      <input id="gender" {...props1} type="text" placeholder="Gender" value={gender} onChange={(res) => setGender(res.target.value)}></input>
+      <input id="image" type="file" placeholder="Image of Yourself" value={image} onChange={(res) => setImage(res.target.value)}></input>
       <button className="signup" onClick={() => signup()}>Sign up</button>
 
       </div>
