@@ -30,7 +30,6 @@ export const Signup = () => {
              password : password,
              age: age,
              gender: gender,
-             image: image,
             info: aboutMe})
 
             alert(`Hello ${username}`)

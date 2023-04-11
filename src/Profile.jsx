@@ -1,37 +1,45 @@
-import React, {useState, useEffect} from "react";
-import { initializeApp, db } from "firebase/app";
-import { getFirestore, collection, getDocs} from "firebase/firestore";
-import { firebaseConfig } from './Firebase'
+import React, { useState, useEffect } from "react";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs, setDocs } from "firebase/firestore";
+import { firebaseConfig } from "./Firebase";
+import { Usercard } from "./Usercard";
+import "./Profile.css";
 
 export const Profile = () => {
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
+  const [user, setUser] = useState([]);
 
-      useEffect(() => {
-        async function fetchData(){
-          const querySnapshot = await getDocs(collection(db, "users"));
-          querySnapshot.forEach((doc) => {
-    
-            //console.log(doc.id);
-            const infoList = doc.data().info
-            const usernameList = doc.data().username
-            //console.log(doc.data())
-            
-            querySnapshot.forEach(doc => { 
-              let userData = doc.data().info + doc.data().username + doc.data().email
-          })
-            
-        })}
-        fetchData()
-      },[])
-    
+  async function fetchData() {
+    const querySnapshot = await getDocs(collection(db, "users"));
+    let users = [];
+    querySnapshot.forEach((doc) => {
+      const userData = {
+        Gender: doc.data().gender,
+        Email: doc.data().email,
+        Information: doc.data().info,
+        Age: doc.data().age,
+      };
+      users.push({ [doc.data().username]: userData });
+    });
+    setUser(users);
+  }
 
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    return (
-    //Insert HTML Here
+  function displayUser() {
+    return <Usercard user={user}></Usercard>;
+  }
+
+  return (
     <div id="root">
-      <div id="profile"></div>
+      <div>
+        {displayUser()}
+      </div>
+      <h1>Hello</h1>
     </div>
-  )
-}
+  );
+};
