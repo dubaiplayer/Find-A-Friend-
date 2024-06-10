@@ -15,8 +15,8 @@ export const Homepage = () => {
         </nav>
       </div>
       <img id="logo" src={ Logo } alt="website logo" />
-      <h1 id="title">Find A Friend</h1>
-      <h1>Connecting People</h1>
+      <h1 id="title">Find A Farmer</h1>
+      <h1>Connecting Customers to Famers</h1>
       <br />
       <h1>from all around the world.</h1>
     </div>

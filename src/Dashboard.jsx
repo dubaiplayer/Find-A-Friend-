@@ -3,6 +3,9 @@ import "./App.css"
 import { Link } from "react-router-dom";
 
 export const Dashboard = () => {
+    const openForm = () => {
+        window.open("https://docs.google.com/forms/d/e/1FAIpQLSerFtkQeFRhL12ZwpsCQknieGTe7kbA2tpjIIgS9bjanQ13Aw/viewform?usp=sf_link", "_blank")
+    }
     const hero = {
         className: "hero"
     }
@@ -16,6 +19,9 @@ export const Dashboard = () => {
             <h1>Dashboard</h1>
             <div {...option}>
                 <Link to="/Profile">Profiles!</Link>
+            </div>
+            <div {...option}>
+                <button class="form" onClick={openForm}>Try Out a Form to Improve the Website!</button>
             </div>
         </div>
     </div>

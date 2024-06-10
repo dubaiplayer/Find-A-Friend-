@@ -8,6 +8,7 @@ import "./Profile.css";
 export const Profile = () => {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
+  
 
   const [user, setUser] = useState([]);
 
@@ -15,6 +16,7 @@ export const Profile = () => {
     const querySnapshot = await getDocs(collection(db, "users"));
     let users = [];
     querySnapshot.forEach((doc) => {
+
       const userData = {
         Gender: doc.data().gender,
         Email: doc.data().email,
@@ -39,7 +41,6 @@ export const Profile = () => {
       <div>
         {displayUser()}
       </div>
-      <h1>Hello</h1>
     </div>
   );
 };
