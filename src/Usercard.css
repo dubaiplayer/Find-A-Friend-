@@ -2,7 +2,7 @@
 #card{
     border: 10px solid orange;
     width: 400px;
-    height: 300px;
+    height: fit-content;
     background-color: white;
     margin: auto;
 }
