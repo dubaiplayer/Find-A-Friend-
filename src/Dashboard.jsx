@@ -20,9 +20,7 @@ export const Dashboard = () => {
             <div {...option}>
                 <Link to="/Profile">Profiles!</Link>
             </div>
-            <div {...option}>
-                <button class="form" onClick={openForm}>Try Out a Form to Improve the Website!</button>
-            </div>
+            
         </div>
     </div>
 

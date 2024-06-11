@@ -19,6 +19,7 @@ export const Profile = () => {
 
       const userData = {
         Gender: doc.data().gender,
+        Number: doc.data().phonenumber,
         Email: doc.data().email,
         Information: doc.data().info,
         Age: doc.data().age,
